@@ -51,6 +51,7 @@ dependencies {
     implementation (Dependencies.LIFECYCLE_RUNTIME_KTX)
     implementation (Dependencies.ROOM)
     implementation (Dependencies.ROOM_EXT)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor  (Dependencies.ROOM_COMPILER)
     kapt (Dependencies.ROOM_COMPILER)
 

@@ -8,6 +8,7 @@ buildscript {
         classpath(BuildPlugins.ANDROID_GRADLE)
         classpath(BuildPlugins.KOTLIN)
         classpath(BuildPlugins.HILT_AGP)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
     }
 }
 
