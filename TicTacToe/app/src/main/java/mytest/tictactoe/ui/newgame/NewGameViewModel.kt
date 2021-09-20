@@ -20,6 +20,9 @@ class NewGameViewModel @Inject constructor(
     private val _players = MutableStateFlow<List<Player>>(emptyList())
     val players : StateFlow<List<Player>> = _players
 
+    private val _isValid = MutableStateFlow<Boolean?>(null)
+    val isValid : StateFlow<Boolean?> = _isValid
+
     init {
         fetchPlayers()
     }
@@ -31,6 +34,15 @@ class NewGameViewModel @Inject constructor(
                 _players.value = result.data!!
             }
         }
+    }
+
+    fun onStartClicked(playerX: String, playerO: String){
+        _isValid.value = !(playerX.isNullOrBlank() || playerO.isNullOrBlank())
+        if(_isValid.value == true){
+
+        }
+
+        _isValid.value = null // set Null because flow doesn't emit same value to the UI
     }
 
 }

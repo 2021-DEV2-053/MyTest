@@ -4,4 +4,6 @@
     <string name="PlayerX">Player X</string>
     <string name="PlayerO">Player O</string>
     <string name="Start">Start</string>
+
+    <string name="toast_err_name">Please enter Player(s) name</string>
 </resources>

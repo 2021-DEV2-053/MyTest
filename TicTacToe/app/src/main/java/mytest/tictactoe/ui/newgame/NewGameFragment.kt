@@ -1,10 +1,12 @@
 package mytest.tictactoe.ui.newgame
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -12,11 +14,6 @@ import mytest.tictactoe.R
 import mytest.tictactoe.databinding.FragmentNewGameBinding
 import mytest.tictactoe.ui.util.launchAndRepeatWithViewLifecycle
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NewGameFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 @AndroidEntryPoint
 class NewGameFragment : Fragment(R.layout.fragment_new_game) {
 
@@ -35,18 +32,30 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.startButton.setOnClickListener {
+            val playerX = binding.playerXAutoCompleteTextView.text.toString()
+            val playerO = binding.playerXAutoCompleteTextView.text.toString()
+            viewModel.onStartClicked(playerX, playerO)
+        }
         observeViewModel()
     }
 
     private fun observeViewModel() {
         launchAndRepeatWithViewLifecycle{
             viewModel.players.collect { players ->
-                val adapter = PlayersAdapter(
-                    requireContext(),
-                    players
-                )
+                val adapter = PlayersAdapter(requireContext(), players)
                 binding.playerXAutoCompleteTextView.setAdapter(adapter)
                 binding.playerOAutoCompleteTextView.setAdapter(adapter)
+            }
+        }
+
+        launchAndRepeatWithViewLifecycle{
+            viewModel.isValid.collect { isValid ->
+               if(isValid != null && isValid){
+                   // nav to In Game
+               }else if(isValid != null && !isValid){
+                   Toast.makeText(requireContext(), R.string.toast_err_name, Toast.LENGTH_SHORT).show()
+               }
             }
         }
     }
