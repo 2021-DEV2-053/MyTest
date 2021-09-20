@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import mytest.tictactoe.R
+import mytest.tictactoe.databinding.FragmentNewGameBinding
+import mytest.tictactoe.ui.util.launchAndRepeatWithViewLifecycle
 
 /**
  * A simple [Fragment] subclass.
@@ -15,22 +18,36 @@ import mytest.tictactoe.R
  * create an instance of this fragment.
  */
 @AndroidEntryPoint
-class NewGameFragment : Fragment() {
+class NewGameFragment : Fragment(R.layout.fragment_new_game) {
 
+    private lateinit var binding: FragmentNewGameBinding
     private val viewModel: NewGameViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_new_game, container, false)
+        binding = FragmentNewGameBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
+        return binding.root
     }
 
-    companion object {
-        fun newInstance() = NewGameFragment().apply { }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        launchAndRepeatWithViewLifecycle{
+            viewModel.players.collect { players ->
+                val adapter = PlayersAdapter(
+                    requireContext(),
+                    players
+                )
+                binding.playerXAutoCompleteTextView.setAdapter(adapter)
+                binding.playerOAutoCompleteTextView.setAdapter(adapter)
+            }
+        }
     }
 }

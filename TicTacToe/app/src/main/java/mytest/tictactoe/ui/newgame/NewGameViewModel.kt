@@ -18,7 +18,7 @@ class NewGameViewModel @Inject constructor(
 ) : ViewModel(){
 
     private val _players = MutableStateFlow<List<Player>>(emptyList())
-    private val players : StateFlow<List<Player>> = _players
+    val players : StateFlow<List<Player>> = _players
 
     init {
         fetchPlayers()
