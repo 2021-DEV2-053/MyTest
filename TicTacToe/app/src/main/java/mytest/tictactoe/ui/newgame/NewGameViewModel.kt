@@ -1,6 +1,5 @@
 package mytest.tictactoe.ui.newgame
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
