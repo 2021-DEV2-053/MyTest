@@ -10,7 +10,7 @@ import mytest.tictactoe.data.source.entity.PlayerEntity
  * Data Access Object for the [PlayerEntity] class.
  */
 @Dao
-interface  PlayersDao {
+interface PlayersDao {
     @Query("SELECT * FROM players")
     fun getAll(): List<PlayerEntity>
 

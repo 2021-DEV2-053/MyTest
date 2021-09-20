@@ -1,8 +1,6 @@
 package mytest.tictactoe.data.source.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import mytest.tictactoe.data.source.entity.PlayerEntity
 
@@ -13,15 +11,4 @@ import mytest.tictactoe.data.source.entity.PlayerEntity
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun playersDao(): PlayersDao
-
-
-    companion object {
-        private const val databaseName = "tictactoe-db"
-
-        fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
-                    .fallbackToDestructiveMigration()
-                    .build()
-        }
-    }
 }

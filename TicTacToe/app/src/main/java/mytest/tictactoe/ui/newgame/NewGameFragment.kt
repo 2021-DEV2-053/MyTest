@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mytest.tictactoe.R
 
 /**
@@ -12,7 +14,10 @@ import mytest.tictactoe.R
  * Use the [NewGameFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class NewGameFragment : Fragment() {
+
+    private val viewModel: NewGameViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +31,6 @@ class NewGameFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(param1: String, param2: String) =
-            NewGameFragment().apply { }
+        fun newInstance() = NewGameFragment().apply { }
     }
 }

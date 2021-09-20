@@ -9,5 +9,5 @@ data class PlayerEntity(
         @PrimaryKey(autoGenerate = true)
         val id : Int? = null,
         @ColumnInfo(name = "name")
-        val name: String?,
+        val name: String?
 )
