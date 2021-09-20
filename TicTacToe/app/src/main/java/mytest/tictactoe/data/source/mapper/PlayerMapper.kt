@@ -7,14 +7,20 @@ import javax.inject.Inject
 
 class PlayerMapper @Inject constructor(
 
-):EntityMapper<PlayerEntity, Player> {
+): EntityMapper<PlayerEntity, Player> {
 
     override fun mapFromEntity(entity: PlayerEntity): Player {
-        TODO("Not yet implemented")
+        return Player(
+            id = entity.id,
+            name = entity.name
+        )
     }
 
     override fun mapToEntity(domainEntity: Player): PlayerEntity {
-        TODO("Not yet implemented")
+        return PlayerEntity(
+            id = domainEntity.id,
+            name = domainEntity.name
+        )
     }
 
 }

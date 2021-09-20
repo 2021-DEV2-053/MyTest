@@ -7,6 +7,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import mytest.tictactoe.data.source.db.AppDatabase
 import mytest.tictactoe.data.source.db.PlayersDao
 import mytest.tictactoe.data.source.entity.PlayerEntity
+import mytest.tictactoe.data.source.mapper.PlayerMapper
+import mytest.tictactoe.domain.model.Player
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
@@ -35,15 +37,18 @@ class PlayerEntityTest {
         db.close()
     }
 
-
     @Test
     @Throws(Exception::class)
-    fun writePlayerAndReadInList() {
-        val player = PlayerEntity(id=1, name="george")
-        playersDao.insertAll(player)
-        val byName = playersDao.findAllByName("george")
-        assertThat(byName.get(0), equalTo(player))
-    }
+    fun playerMapperTest() {
 
+        val playerMapper = PlayerMapper()
+
+        val playerDomain = Player(id=1, name="george")
+
+        playersDao.insertAll(playerMapper.mapToEntity(playerDomain))
+        val playerEntity = playersDao.findAllByName("george").get(0)
+
+        assertThat(playerMapper.mapFromEntity(playerEntity), equalTo(playerDomain))
+    }
 
 }
