@@ -65,7 +65,7 @@ class PlayerEntityTest {
 
         playersDao.insertAll(player1Entity, player2Entity, player3Entity)
 
-        
+
     }
 
 }

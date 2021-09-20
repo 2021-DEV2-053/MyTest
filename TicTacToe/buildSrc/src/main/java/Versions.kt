@@ -19,5 +19,6 @@ object Versions {
     const val JUNIT_VERSION = "4.13.2"
     const val JUNIT_EXT_VERSION = "1.1.3"
     const val ESPRESSO_VERSION = "3.4.0"
+    const val ARCH_VERSION = "2.1.0"
     const val MOCKITO_VERSION = "3.3.3"
 }

@@ -23,4 +23,12 @@ class PlayerMapper @Inject constructor(
         )
     }
 
+    fun mapFromEntityList(entities: List<PlayerEntity>): List<Player>{
+        return entities.map { mapFromEntity(it) }
+    }
+
+    fun mapToEntityList(players: List<Player>): List<PlayerEntity>{
+        return players.map { mapToEntity(it) }
+    }
+
 }
