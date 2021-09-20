@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.newgame.">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.newgame.NewGameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data></data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/New_game" />
+        android:fitsSystemWindows="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="24dp"
+                app:srcCompat="@drawable/ic_tic_tac_toe"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/player_x_textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="@string/PlayerX"
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/player_x_autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/player_o_textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="@string/PlayerO"
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/player_o_autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-</FrameLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:text="@string/Start"
+                app:cornerRadius="12dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/blue_700"
+                app:rippleColor="@color/blue_500"
+                style="?attr/materialButtonOutlinedStyle"/>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

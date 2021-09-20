@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pc/Documents/GitHub/MyTest/TicTacToe/app/src/main/res/drawable/ic_tic_tac_toe.xml" value="0.5620512820512821" />
         <entry key="..\:/Users/Pc/Documents/GitHub/MyTest/TicTacToe/app/src/main/res/layout/activity_main.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Pc/Documents/GitHub/MyTest/TicTacToe/app/src/main/res/layout/fragment_creategame.xml" value="0.3515625" />
+        <entry key="..\:/Users/Pc/Documents/GitHub/MyTest/TicTacToe/app/src/main/res/layout/fragment_new_game.xml" value="0.3515625" />
       </map>
     </option>
   </component>
