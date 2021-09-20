@@ -4,10 +4,10 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("realm-android")
 }
 
 android {
+    buildToolsVersion = Config.BUILD_TOOLS
     compileSdk = Config.COMPILE_SDK
 
     defaultConfig {
@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -44,21 +47,29 @@ dependencies {
     implementation (Dependencies.CONSTRAINT_LAYOUT)
     implementation (Dependencies.NAVIGATION_FRAGMENT)
     implementation (Dependencies.NAVIGATION_UI)
-
     implementation (Dependencies.LIFECYCLE_VIEWMODEL_KTX)
     implementation (Dependencies.LIFECYCLE_RUNTIME_KTX)
+    implementation (Dependencies.ROOM)
+    implementation (Dependencies.ROOM_EXT)
+    annotationProcessor  (Dependencies.ROOM_COMPILER)
+    kapt (Dependencies.ROOM_COMPILER)
 
     implementation (Dependencies.MATERIAL)
     implementation (Dependencies.GSON)
+    implementation (Dependencies.COROUTINES_ANDROID)
     implementation (Dependencies.HILT_ANDROID)
     kapt (Dependencies.HILT_COMPILER)
 
-    implementation (Dependencies.COROUTINES_ANDROID)
-
     //Testing
     testImplementation (Dependencies.JUNIT)
+    testImplementation (Dependencies.JUNIT_EXT)
+    testImplementation (Dependencies.ROOM_TESTING)
+    testImplementation (Dependencies.MOCKITO)
+    //testImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.JUNIT_EXT)
+    androidTestImplementation (Dependencies.HILT_TESTING)
     androidTestImplementation (Dependencies.ESPRESSO)
+    //androidTestImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.NAVIGATION_TESTING)
 }
 

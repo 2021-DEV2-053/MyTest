@@ -8,7 +8,6 @@ buildscript {
         classpath(BuildPlugins.ANDROID_GRADLE)
         classpath(BuildPlugins.KOTLIN)
         classpath(BuildPlugins.HILT_AGP)
-        classpath(BuildPlugins.REALM)
     }
 }
 
