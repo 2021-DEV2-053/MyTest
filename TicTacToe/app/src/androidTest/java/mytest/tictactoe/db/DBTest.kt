@@ -32,7 +32,7 @@ class DBTest {
 
     @Test
     @Throws(Exception::class)
-    fun `inserAndGetDataFromDBRoom`() {
+    fun `insertAndGetDataFromDBRoom`() {
         val playerEntity = PlayerEntity(id = 1, name = "george")
 
         // insert

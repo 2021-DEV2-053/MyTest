@@ -42,7 +42,6 @@ class NewGameViewModel @Inject constructor(
 
         }
 
-        _isValid.value = null // set Null because flow doesn't emit same value to the UI
     }
 
 }

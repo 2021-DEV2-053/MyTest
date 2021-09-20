@@ -67,12 +67,12 @@ dependencies {
     testImplementation (Dependencies.ROOM_TESTING)
     testImplementation (Dependencies.ARCH_TESTING)
     testImplementation (Dependencies.MOCKITO)
-    //testImplementation (Dependencies.COROUTINES_TEST)
+    testImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.JUNIT_EXT)
     androidTestImplementation (Dependencies.HILT_TESTING)
     androidTestImplementation (Dependencies.ESPRESSO)
     androidTestImplementation (Dependencies.ARCH_TESTING)
-    //androidTestImplementation (Dependencies.COROUTINES_TEST)
+    androidTestImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.NAVIGATION_TESTING)
 }
 
