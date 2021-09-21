@@ -4,18 +4,14 @@ import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.replaceText
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import mytest.tictactoe.R
 import mytest.tictactoe.launchFragmentInHiltContainer
 import mytest.tictactoe.ui.newgame.NewGameFragment
-import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -37,12 +33,12 @@ class NewGameFragmentTest {
 
     @Test
     fun testNavigationToInGameFragment() {
-        // GIVEN - On the "Add Task" screen.
+        // GIVEN - On the "NewGame" screen.
         val navController = TestNavHostController(getApplicationContext())
         launchFragment(navController)
 
         // WHEN - Valid playerX and playerO and click start
-        onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("john"))
+        onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("John"))
         onView(withId(R.id.player_o_autoCompleteTextView)).perform(replaceText("smith"))
         onView(withId(R.id.start_button)).perform(click())
 

@@ -54,6 +54,7 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
             viewModel.isValid.collect { isValid ->
                if(isValid != null && isValid){
                    findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment)
+                   viewModel.onStarted()
                }else if(isValid != null && !isValid){
                    Toast.makeText(requireContext(), R.string.toast_err_name, Toast.LENGTH_SHORT).show()
                }

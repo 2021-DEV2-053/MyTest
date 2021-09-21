@@ -44,4 +44,8 @@ class NewGameViewModel @Inject constructor(
 
     }
 
+    fun onStarted(){
+        _isValid.value = null
+    }
+
 }
