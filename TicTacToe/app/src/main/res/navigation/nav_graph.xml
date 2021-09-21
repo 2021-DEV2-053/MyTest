@@ -9,5 +9,15 @@
         android:id="@+id/newGameFragment"
         android:name="mytest.tictactoe.ui.newgame.NewGameFragment"
         android:label="@string/New_game"
-        tools:layout="@layout/fragment_new_game" />
+        tools:layout="@layout/fragment_new_game" >
+        <action
+            android:id="@+id/action_newGameFragment_to_inGameFragment"
+            app:destination="@id/inGameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inGameFragment"
+        android:name="mytest.tictactoe.ui.ingame.InGameFragment"
+        android:label="@string/New_game"
+        tools:layout="@layout/fragment_in_game" />
 </navigation>

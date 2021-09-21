@@ -1,13 +1,14 @@
 package mytest.tictactoe.ui.newgame
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import mytest.tictactoe.R
@@ -52,7 +53,7 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
         launchAndRepeatWithViewLifecycle{
             viewModel.isValid.collect { isValid ->
                if(isValid != null && isValid){
-                   // nav to In Game
+                   findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment)
                }else if(isValid != null && !isValid){
                    Toast.makeText(requireContext(), R.string.toast_err_name, Toast.LENGTH_SHORT).show()
                }

@@ -4,6 +4,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -17,7 +18,7 @@ android {
         versionCode = Config.VERSION_CODE
         versionName = Config.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "mytest.tictactoe.CustomTestRunner"
     }
 
     buildTypes {
@@ -45,19 +46,20 @@ android {
 dependencies {
     implementation (Dependencies.APPCOMPAT)
     implementation (Dependencies.CONSTRAINT_LAYOUT)
+    implementation (Dependencies.LEGACY_SUPPORT)
+    implementation (Dependencies.FRAGMENT)
     implementation (Dependencies.NAVIGATION_FRAGMENT)
     implementation (Dependencies.NAVIGATION_UI)
     implementation (Dependencies.LIFECYCLE_VIEWMODEL_KTX)
     implementation (Dependencies.LIFECYCLE_RUNTIME_KTX)
     implementation (Dependencies.ROOM)
     implementation (Dependencies.ROOM_EXT)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    annotationProcessor  (Dependencies.ROOM_COMPILER)
+    annotationProcessor (Dependencies.ROOM_COMPILER)
     kapt (Dependencies.ROOM_COMPILER)
 
     implementation (Dependencies.MATERIAL)
     implementation (Dependencies.GSON)
-    implementation (Dependencies.COROUTINES_ANDROID)
+    implementation (Dependencies.COROUTINES_CORE)
     implementation (Dependencies.HILT_ANDROID)
     kapt (Dependencies.HILT_COMPILER)
 
@@ -68,11 +70,12 @@ dependencies {
     testImplementation (Dependencies.ARCH_TESTING)
     testImplementation (Dependencies.MOCKITO)
     testImplementation (Dependencies.COROUTINES_TEST)
+    debugImplementation (Dependencies.FRAGMENT_TESTING)
     androidTestImplementation (Dependencies.JUNIT_EXT)
     androidTestImplementation (Dependencies.HILT_TESTING)
     androidTestImplementation (Dependencies.ESPRESSO)
     androidTestImplementation (Dependencies.ARCH_TESTING)
-    androidTestImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.NAVIGATION_TESTING)
+    kaptAndroidTest(Dependencies.HILT_COMPILER)
 }
 
