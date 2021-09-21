@@ -1,9 +1,6 @@
 package mytest.tictactoe.data.source.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import mytest.tictactoe.data.source.entity.PlayerEntity
 
 /**
@@ -20,7 +17,10 @@ interface PlayersDao {
     @Query("SELECT * FROM players WHERE name LIKE :name")
     fun findAllByName(name: String): List<PlayerEntity>
 
-    @Insert
+    @Query("SELECT * FROM players WHERE name = :name")
+    fun findPlayerByName(name: String): PlayerEntity
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg players: PlayerEntity)
 
     @Delete

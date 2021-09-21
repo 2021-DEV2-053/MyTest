@@ -15,7 +15,7 @@ interface PlayersRepository {
     suspend fun getPlayers(): Result<List<Player>>
     /**
      *
-     * Insert if new [Player]s.
+     * Insert new [Player]s.
      */
-    suspend fun insertIfNotExist(vararg players: Player): Result<List<Player>>
+    suspend fun insertPlayers(vararg players: Player): Result<List<Player>>
 }

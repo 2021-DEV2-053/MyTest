@@ -1,10 +1,8 @@
 package mytest.tictactoe.data.source.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(tableName = "players")
+@Entity(tableName = "players", indices = [Index(value = ["name"], unique = true)])
 data class PlayerEntity(
         @PrimaryKey(autoGenerate = true)
         val id : Int? = null,

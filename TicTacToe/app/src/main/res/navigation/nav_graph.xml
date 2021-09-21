@@ -18,6 +18,7 @@
     <fragment
         android:id="@+id/inGameFragment"
         android:name="mytest.tictactoe.ui.ingame.InGameFragment"
-        android:label="@string/New_game"
-        tools:layout="@layout/fragment_in_game" />
+        android:label="@string/In_game"
+        tools:layout="@layout/fragment_in_game" >
+    </fragment>
 </navigation>

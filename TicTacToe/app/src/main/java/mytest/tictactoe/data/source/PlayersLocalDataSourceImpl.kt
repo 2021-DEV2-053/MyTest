@@ -21,6 +21,18 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getPlayersByNames(vararg players: Player): Result<List<Player>> {
+        return try{
+            val players = ArrayList<Player>()
+            players.forEach {
+                players.add(playerMapper.mapFromEntity(playerDao.findPlayerByName(it.name!!)))
+            }
+            Result.Success( players )
+        }catch(e: Exception){
+            Result.Error(e)
+        }
+    }
+
     override suspend fun insertPlayers(vararg players: Player): Result<Boolean> {
         return try{
             playerDao.insertAll(*playerMapper.mapToEntityList(players.toList()).toTypedArray())
