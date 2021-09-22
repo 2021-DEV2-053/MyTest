@@ -12,7 +12,7 @@ import mytest.tictactoe.domain.model.Player
 class PlayersAdapter(
     val ctx: Context,
     val players: List<Player>
-):ArrayAdapter<Player>(ctx, R.layout.item_player, players) {
+): ArrayAdapter<Player>(ctx, R.layout.item_player, players) {
 
     val layoutInflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 

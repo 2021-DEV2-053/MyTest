@@ -5,6 +5,7 @@ import mytest.tictactoe.domain.model.Player
 
 interface PlayersLocalDataSource{
     suspend fun getPlayers(): Result<List<Player>>
-    suspend fun getPlayersByNames(vararg players: Player): Result<List<Player>>
+    suspend fun getPlayerByName(name: String): Result<Player>
+    suspend fun getPlayersByNames(vararg playersName: String): Result<List<Player>>
     suspend fun insertPlayers(vararg players: Player): Result<Boolean>
 }

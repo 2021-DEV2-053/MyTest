@@ -27,7 +27,7 @@ class AppModule {
             appContext,
             AppDatabase::class.java,
             "Tictactoe-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides

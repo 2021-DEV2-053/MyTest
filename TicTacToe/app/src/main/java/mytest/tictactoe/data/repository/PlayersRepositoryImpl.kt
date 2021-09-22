@@ -1,10 +1,11 @@
 package mytest.tictactoe.data.repository
 
+import androidx.annotation.WorkerThread
 import mytest.tictactoe.data.source.PlayersLocalDataSource
 import mytest.tictactoe.result.Result
 import mytest.tictactoe.domain.model.Player
 import mytest.tictactoe.domain.repository.PlayersRepository
-import mytest.tictactoe.result.succeeded
+import mytest.tictactoe.result.ErrorType
 import javax.inject.Inject
 
 class PlayersRepositoryImpl @Inject constructor(
@@ -15,15 +16,25 @@ class PlayersRepositoryImpl @Inject constructor(
         return playerLocalDataSource.getPlayers()
     }
 
-    override suspend fun insertPlayers(vararg players: Player): Result<List<Player>> {
-        val result = playerLocalDataSource.insertPlayers(*players)
-        return if(result.succeeded){
-            playerLocalDataSource.getPlayersByNames(*players)
-        }else{
-            Result.Error(
-                Exception("No Players found")
-            )
+    override suspend fun insertPlayers(playerX: String, playerO: String): Result<Boolean> {
+        if(playerX.isNullOrBlank() && playerO.isNullOrBlank()){
+            return Result.Error(Exception("Players name are empty"), ErrorType.ERROR_PLAYERS_NAME_EMPTY)
         }
+
+        if(playerX.isNullOrBlank()){
+            return Result.Error(Exception("PlayerX name is empty"), ErrorType.ERROR_PLAYER_X_EMPTY)
+        }
+
+        if(playerO.isNullOrBlank()){
+            return Result.Error(Exception("PlayerO name is empty"), ErrorType.ERROR_PLAYER_O_EMPTY)
+        }
+
+        if(playerX == playerO){
+            return Result.Error(Exception("Players have the same name"), ErrorType.ERROR_PLAYERS_CONFLICT_NAME)
+        }
+
+        return playerLocalDataSource.insertPlayers(Player(name = playerX), Player(name = playerO))
+
     }
 
 }

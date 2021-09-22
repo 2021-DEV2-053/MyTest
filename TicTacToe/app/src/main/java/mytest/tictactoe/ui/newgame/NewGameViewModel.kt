@@ -1,5 +1,6 @@
 package mytest.tictactoe.ui.newgame
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,6 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mytest.tictactoe.domain.model.Player
 import mytest.tictactoe.domain.repository.PlayersRepository
+import mytest.tictactoe.result.ErrorType
+import mytest.tictactoe.result.Result
 import mytest.tictactoe.result.data
 import mytest.tictactoe.result.succeeded
 import javax.inject.Inject
@@ -20,8 +23,11 @@ class NewGameViewModel @Inject constructor(
     private val _players = MutableStateFlow<List<Player>>(emptyList())
     val players : StateFlow<List<Player>> = _players
 
-    private val _isValid = MutableStateFlow<Boolean?>(null)
-    val isValid : StateFlow<Boolean?> = _isValid
+    private val _error = MutableStateFlow<ErrorType?>(null)
+    val error : StateFlow<ErrorType?> = _error
+
+    private val _isStarting = MutableStateFlow(false)
+    val isStarting : StateFlow<Boolean> = _isStarting
 
     init {
         fetchPlayers()
@@ -30,22 +36,42 @@ class NewGameViewModel @Inject constructor(
     private fun fetchPlayers() {
         viewModelScope.launch {
             val result = playersRepository.getPlayers()
-            if(result.succeeded){
-                _players.value = result.data!!
+            when(result){
+                is Result.Success -> {
+                    _players.value = result.data
+                }
+                is Result.Error -> {
+                    _error.value = result.errorType
+                }
+            }
+        }
+    }
+
+
+    private fun startNewGame(playerX: String, playerO: String) {
+        viewModelScope.launch {
+            val result =  playersRepository.insertPlayers(playerX, playerO)
+            when(result){
+                is Result.Success -> {
+                    _isStarting.value = true
+                }
+                is Result.Error -> {
+                    _error.value = result.errorType
+                }
             }
         }
     }
 
     fun onStartClicked(playerX: String, playerO: String){
-        _isValid.value = !(playerX.isNullOrBlank() || playerO.isNullOrBlank())
-        if(_isValid.value == true){
-
-        }
+        startNewGame(playerX, playerO)
 
     }
 
     fun onStarted(){
-        _isValid.value = null
+        _isStarting.value = false
+    }
+    fun onErrorShowed(){
+        _error.value = null
     }
 
 }

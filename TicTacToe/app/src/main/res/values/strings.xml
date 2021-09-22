@@ -6,5 +6,10 @@
     <string name="PlayerO">Player O</string>
     <string name="Start">Start</string>
 
-    <string name="toast_err_name">Please enter Player(s) name</string>
+    <string name="toast_err">Someting wrong</string>
+    <string name="toast_err_player_x_empty">Please enter Player X name</string>
+    <string name="toast_err_player_o_empty">Please enter Player O name</string>
+    <string name="toast_err_players_name_empty">Please enter name of players</string>
+    <string name="toast_err_conflict_name">Player(s) have the same name !</string>
+    <string name="toast_err_no_players_found">No Players found</string>
 </resources>

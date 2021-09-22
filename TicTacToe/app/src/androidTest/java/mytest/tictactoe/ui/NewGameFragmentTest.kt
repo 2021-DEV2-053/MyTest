@@ -41,10 +41,18 @@ class NewGameFragmentTest {
         onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("John"))
         onView(withId(R.id.player_o_autoCompleteTextView)).perform(replaceText("smith"))
         onView(withId(R.id.start_button)).perform(click())
-
         // THEN - Verify that we navigated to the InGame screen.
         assertEquals(navController.currentDestination?.id, R.id.inGameFragment)
+
+        // WHEN - playerX and playerO have same name
+        onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("John"))
+        onView(withId(R.id.player_o_autoCompleteTextView)).perform(replaceText("John"))
+        onView(withId(R.id.start_button)).perform(click())
+        // THEN - Verify that we stay at the NewGame screen.
+        assertEquals(navController.currentDestination?.id, R.id.newGameFragment)
     }
+
+
 
     private fun launchFragment(navController: TestNavHostController) {
         launchFragmentInHiltContainer<NewGameFragment>() {

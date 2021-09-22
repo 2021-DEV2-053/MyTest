@@ -21,11 +21,19 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPlayersByNames(vararg players: Player): Result<List<Player>> {
+    override suspend fun getPlayerByName(name: String): Result<Player> {
+        return try{
+            Result.Success(playerMapper.mapFromEntity(playerDao.findPlayerByName(name)))
+        }catch(e: Exception){
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getPlayersByNames(vararg playersName: String): Result<List<Player>> {
         return try{
             val players = ArrayList<Player>()
-            players.forEach {
-                players.add(playerMapper.mapFromEntity(playerDao.findPlayerByName(it.name!!)))
+            playersName.forEach { name ->
+                players.add(playerMapper.mapFromEntity(playerDao.findPlayerByName(name)))
             }
             Result.Success( players )
         }catch(e: Exception){
