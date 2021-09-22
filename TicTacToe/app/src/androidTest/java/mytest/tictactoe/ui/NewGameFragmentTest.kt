@@ -4,8 +4,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.replaceText
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -40,13 +39,22 @@ class NewGameFragmentTest {
         // WHEN - Valid playerX and playerO and click start
         onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("John"))
         onView(withId(R.id.player_o_autoCompleteTextView)).perform(replaceText("smith"))
+        closeSoftKeyboard()
         onView(withId(R.id.start_button)).perform(click())
         // THEN - Verify that we navigated to the InGame screen.
         assertEquals(navController.currentDestination?.id, R.id.inGameFragment)
+    }
+
+    @Test
+    fun testNavigationToInGameFragmentWithSameName() {
+        // GIVEN - On the "NewGame" screen.
+        val navController = TestNavHostController(getApplicationContext())
+        launchFragment(navController)
 
         // WHEN - playerX and playerO have same name
         onView(withId(R.id.player_x_autoCompleteTextView)).perform(replaceText("John"))
         onView(withId(R.id.player_o_autoCompleteTextView)).perform(replaceText("John"))
+        closeSoftKeyboard()
         onView(withId(R.id.start_button)).perform(click())
         // THEN - Verify that we stay at the NewGame screen.
         assertEquals(navController.currentDestination?.id, R.id.newGameFragment)
