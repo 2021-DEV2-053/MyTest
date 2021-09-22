@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import mytest.tictactoe.R
 import mytest.tictactoe.databinding.FragmentNewGameBinding
+import mytest.tictactoe.domain.model.Player
 import mytest.tictactoe.ui.util.ErrorToastUtils.Companion.fromError
 import mytest.tictactoe.ui.util.launchAndRepeatWithViewLifecycle
 
@@ -40,6 +41,14 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
             val playerX = binding.playerXAutoCompleteTextView.text.toString()
             val playerO = binding.playerOAutoCompleteTextView.text.toString()
             viewModel.onStartClicked(playerX, playerO)
+        }
+        binding.playerXAutoCompleteTextView.setOnItemClickListener() { parent, _, position, id ->
+            val player = parent.adapter.getItem(position) as Player?
+            binding.playerXAutoCompleteTextView.setText(player!!.name)
+        }
+        binding.playerOAutoCompleteTextView.setOnItemClickListener() { parent, _, position, id ->
+            val player = parent.adapter.getItem(position) as Player?
+            binding.playerOAutoCompleteTextView.setText(player!!.name)
         }
         observeViewModel()
     }
