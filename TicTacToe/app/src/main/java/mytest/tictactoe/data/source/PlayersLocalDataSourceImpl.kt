@@ -4,6 +4,7 @@ import mytest.tictactoe.result.Result
 import mytest.tictactoe.data.source.db.PlayersDao
 import mytest.tictactoe.data.source.mapper.PlayerMapper
 import mytest.tictactoe.domain.model.Player
+import mytest.tictactoe.result.ErrorType
 import javax.inject.Inject
 
 class PlayersLocalDataSourceImpl @Inject constructor(
@@ -23,7 +24,12 @@ class PlayersLocalDataSourceImpl @Inject constructor(
 
     override suspend fun getPlayerByName(name: String): Result<Player> {
         return try{
-            Result.Success(playerMapper.mapFromEntity(playerDao.findPlayerByName(name)))
+            val playerEntity = playerDao.findPlayerByName(name)
+            if(playerEntity != null){
+                Result.Success(playerMapper.mapFromEntity(playerEntity))
+            }else{
+                Result.Error(Exception("Player not found"), ErrorType.NO_RESULTS_FOUND)
+            }
         }catch(e: Exception){
             Result.Error(e)
         }
@@ -33,9 +39,12 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         return try{
             val players = ArrayList<Player>()
             playersName.forEach { name ->
-                players.add(playerMapper.mapFromEntity(playerDao.findPlayerByName(name)))
+                val playerEntity = playerDao.findPlayerByName(name)
+                if(playerEntity != null){
+                    players.add(playerMapper.mapFromEntity(playerEntity))
+                }
             }
-            Result.Success( players )
+            Result.Success(players)
         }catch(e: Exception){
             Result.Error(e)
         }

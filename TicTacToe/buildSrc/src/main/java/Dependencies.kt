@@ -30,6 +30,7 @@ object Dependencies {
     //Testing
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val JUNIT_EXT = "androidx.test.ext:junit-ktx:${Versions.JUNIT_EXT_VERSION}"
+    const val GOOGLE_TRUTH = "com.google.truth:truth:${Versions.TRUTH_VERSION}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_VERSION}"
     const val FRAGMENT_TESTING = "androidx.fragment:fragment-testing:${Versions.FRAGMENT_VERSION}"
     const val NAVIGATION_TESTING = "androidx.navigation:navigation-testing:${Versions.NAVIGATION_VERSION}"

@@ -25,13 +25,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="@string/PlayerX"
+                android:labelFor="@+id/player_x_autoCompleteTextView"
                 app:startIconDrawable="@drawable/ic_baseline_person_24"
                 app:endIconMode="clear_text"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/player_x_autoCompleteTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:maxLines="1"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -41,13 +42,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="@string/PlayerO"
+                android:labelFor="@+id/player_o_autoCompleteTextView"
                 app:startIconDrawable="@drawable/ic_baseline_person_24"
                 app:endIconMode="clear_text"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/player_o_autoCompleteTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
                     android:maxLines="1"/>
             </com.google.android.material.textfield.TextInputLayout>

@@ -41,6 +41,13 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
     }
+
+    packagingOptions {
+        resources.excludes.add("**/attach_hotspot_windows.dll")
+        resources.excludes.add("META-INF/licenses/**")
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
@@ -75,6 +82,9 @@ dependencies {
     androidTestImplementation (Dependencies.HILT_TESTING)
     androidTestImplementation (Dependencies.ESPRESSO)
     androidTestImplementation (Dependencies.ARCH_TESTING)
+    androidTestImplementation (Dependencies.GOOGLE_TRUTH)
+    androidTestImplementation (Dependencies.MOCKITO)
+    androidTestImplementation (Dependencies.COROUTINES_TEST)
     androidTestImplementation (Dependencies.NAVIGATION_TESTING)
     kaptAndroidTest(Dependencies.HILT_COMPILER)
 }

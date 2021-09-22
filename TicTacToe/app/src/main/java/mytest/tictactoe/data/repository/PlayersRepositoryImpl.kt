@@ -1,6 +1,5 @@
 package mytest.tictactoe.data.repository
 
-import androidx.annotation.WorkerThread
 import mytest.tictactoe.data.source.PlayersLocalDataSource
 import mytest.tictactoe.result.Result
 import mytest.tictactoe.domain.model.Player

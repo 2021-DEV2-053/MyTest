@@ -1,4 +1,4 @@
-package mytest.tictactoe
+package mytest.tictactoe.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

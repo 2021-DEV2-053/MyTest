@@ -14,16 +14,16 @@ interface PlayersDao {
      * @return all players.
      */
     @Query("SELECT * FROM players")
-    fun getAll(): List<PlayerEntity>
+    suspend fun getAll(): List<PlayerEntity>
 
     @Query("SELECT * FROM players WHERE id IN (:playerIds)")
-    fun loadAllByIds(playerIds: IntArray): List<PlayerEntity>
+    suspend fun loadAllByIds(playerIds: IntArray): List<PlayerEntity>
 
     @Query("SELECT * FROM players WHERE name LIKE :name")
-    fun findAllByName(name: String): List<PlayerEntity>
+    suspend fun findAllByName(name: String): List<PlayerEntity>
 
     @Query("SELECT * FROM players WHERE name = :name")
-    fun findPlayerByName(name: String): PlayerEntity
+    suspend fun findPlayerByName(name: String): PlayerEntity?
 
     /**
      * Insert a list of Player. If a player already exist, replace it.
@@ -34,5 +34,5 @@ interface PlayersDao {
     suspend fun insertAll(vararg players: PlayerEntity)
 
     @Delete
-    fun delete(user: PlayerEntity)
+    suspend fun delete(user: PlayerEntity)
 }
