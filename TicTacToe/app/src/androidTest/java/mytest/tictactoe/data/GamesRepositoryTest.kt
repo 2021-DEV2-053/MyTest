@@ -42,6 +42,4 @@ class GamesRepositoryTest {
         assertThat(result.data!!.size).isEqualTo(TestData.games.size)
     }
 
-
-
 }

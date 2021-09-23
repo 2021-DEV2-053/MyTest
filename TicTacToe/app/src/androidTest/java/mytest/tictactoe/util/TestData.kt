@@ -9,6 +9,7 @@ import mytest.tictactoe.domain.model.Player
  */
 object TestData {
 
+    /*****Test data for PLayer repo*********/
     val playerEmpty = Player( name = "")
 
     val player1 = Player( name = "player 1")
@@ -28,6 +29,7 @@ object TestData {
         player2
     )
 
+    /*****Test data for GAME repo*********/
     val playerX = Player( id= 1, name = "player 1")
     val playerO = Player( id= 2, name = "player 2")
 
