@@ -28,5 +28,8 @@ object TestData {
         player2
     )
 
-    val game = Game()
+    val playerX = Player( id= 1, name = "player 1")
+    val playerO = Player( id= 2, name = "player 2")
+
+    val game = Game(gameId = 1, playerX = playerX, playerO = playerO  )
 }

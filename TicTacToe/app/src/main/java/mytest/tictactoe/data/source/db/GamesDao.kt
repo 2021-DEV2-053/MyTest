@@ -12,7 +12,6 @@ interface GamesDao {
     @Query("SELECT * FROM games")
     suspend fun getAll(): List<GameEntity>
 
-    @Transaction
     @Query("SELECT * FROM games WHERE gameId = :id")
     suspend fun findGame(id: String): GameEntity?
 

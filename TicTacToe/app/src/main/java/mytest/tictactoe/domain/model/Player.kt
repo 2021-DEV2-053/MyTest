@@ -1,6 +1,6 @@
 package mytest.tictactoe.domain.model
 
 data class Player(
-    var id: Int? = null,
+    var id: Long? = null,
     var name: String? = null
 )

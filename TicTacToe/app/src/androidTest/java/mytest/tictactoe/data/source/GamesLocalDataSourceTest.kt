@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import mytest.tictactoe.data.source.mapper.PlayerMapper
 import mytest.tictactoe.util.TestData
 import kotlinx.coroutines.test.runBlockingTest
 import mytest.tictactoe.data.source.db.AppDatabase
@@ -61,12 +60,15 @@ class GamesLocalDataSourceTest {
         val result = gamesLocalDataSource.insertGame(TestData.game)
         assertThat(result.succeeded).isTrue()
         assertThat(result.data).isEqualTo(1)
-
     }
 
     @Test
     fun findASpecificGame() = runBlockingTest {
+        gamesLocalDataSource.insertGame(TestData.game)
+        val result = gamesLocalDataSource.getGame(TestData.game.gameId!!)
 
+        assertThat(result.succeeded).isTrue()
+        assertThat(result.data!!.gameId!!).isEqualTo(1)
     }
 
     @Test

@@ -6,7 +6,7 @@ import java.util.*
 @Entity(tableName = "games")
 data class GameEntity(
         @PrimaryKey(autoGenerate = true)
-        val gameId : Int? = null,
+        val gameId : Long? = null,
         @ColumnInfo(name = "createdAt")
         val createdAt: Date?,
         @ColumnInfo(name = "endedAt")
