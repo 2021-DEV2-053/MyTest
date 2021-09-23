@@ -17,5 +17,5 @@ interface PlayersRepository {
      *
      * Insert new [Player]s.
      */
-    suspend fun insertPlayers(playerX: String, playerO: String): Result<Boolean>
+    suspend fun insertPlayers(playerX: String, playerO: String): Result<List<Long>>
 }

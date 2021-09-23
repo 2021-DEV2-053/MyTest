@@ -15,7 +15,7 @@ class PlayersRepositoryImpl @Inject constructor(
         return playerLocalDataSource.getPlayers()
     }
 
-    override suspend fun insertPlayers(playerX: String, playerO: String): Result<Boolean> {
+    override suspend fun insertPlayers(playerX: String, playerO: String): Result<List<Long>> {
         if(playerX.isNullOrBlank() && playerO.isNullOrBlank()){
             return Result.Error(Exception("Players name are empty"), ErrorType.ERROR_PLAYERS_NAME_EMPTY)
         }

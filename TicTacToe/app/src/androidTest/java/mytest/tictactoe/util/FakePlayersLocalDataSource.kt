@@ -18,7 +18,7 @@ class FakePlayersLocalDataSource: PlayersLocalDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun insertPlayers(vararg players: Player): Result<Boolean> {
+    override suspend fun insertPlayers(vararg players: Player): Result<List<Long>> {
         TODO("Not yet implemented")
     }
 }

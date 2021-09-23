@@ -50,10 +50,10 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun insertPlayers(vararg players: Player): Result<Boolean> {
+    override suspend fun insertPlayers(vararg players: Player): Result<List<Long>> {
         return try{
-            playerDao.insertAll(*playerMapper.mapToEntityList(players.toList()).toTypedArray())
-            Result.Success(true)
+            val listOfplayerEntity = playerMapper.mapToEntityList(players.toList())
+            Result.Success(playerDao.insertAll(*listOfplayerEntity.toTypedArray()))
         }catch(e: Exception){
             Result.Error(e)
         }

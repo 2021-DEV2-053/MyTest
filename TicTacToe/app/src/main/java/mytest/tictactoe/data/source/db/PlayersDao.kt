@@ -31,7 +31,7 @@ interface PlayersDao {
      * @param players list of Player to be inserted.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg players: PlayerEntity)
+    suspend fun insertAll(vararg players: PlayerEntity): List<Long>
 
     @Delete
     suspend fun delete(user: PlayerEntity)

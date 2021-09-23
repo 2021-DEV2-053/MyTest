@@ -59,7 +59,7 @@ class PlayersLocalDataSourceTest {
     @Test
     fun insertAndGetPlayer1Test() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1)
-        assertThat(result).isEqualTo(Success(true))
+        assertThat(result.succeeded).isTrue()
 
         val playerDomain = playersLocalDataSource.getPlayerByName(TestData.player1.name!!)
 
@@ -70,7 +70,7 @@ class PlayersLocalDataSourceTest {
     @Test
     fun insertTwoPlayersTest() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1, TestData.player2)
-        assertThat(result).isEqualTo(Success(true))
+        assertThat(result.succeeded).isTrue()
 
         val listOfPlayer = playersLocalDataSource.getPlayersByNames(
             TestData.player1.name!!,
@@ -85,7 +85,7 @@ class PlayersLocalDataSourceTest {
     @Test
     fun insertTwoPlayersWithSameNameTest() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1, TestData.player1)
-        assertThat(result).isEqualTo(Success(true))
+        assertThat(result.succeeded).isTrue()
 
         val resultPlayers = playersLocalDataSource.getPlayers()
 

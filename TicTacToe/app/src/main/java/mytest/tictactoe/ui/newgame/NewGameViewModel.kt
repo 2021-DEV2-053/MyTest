@@ -1,6 +1,5 @@
 package mytest.tictactoe.ui.newgame
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,8 +10,6 @@ import mytest.tictactoe.domain.model.Player
 import mytest.tictactoe.domain.repository.PlayersRepository
 import mytest.tictactoe.result.ErrorType
 import mytest.tictactoe.result.Result
-import mytest.tictactoe.result.data
-import mytest.tictactoe.result.succeeded
 import javax.inject.Inject
 
 @HiltViewModel
