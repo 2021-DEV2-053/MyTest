@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.newgame.NewGameFragment">
-
-    <data></data>
+    <data>
+        <variable
+            name="viewModel"
+            type="mytest.tictactoe.ui.ingame.InGameViewModel" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,8 +15,156 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textView_02"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(0, 2)}"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/textView_12"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(1, 2)}" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textView_22"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 2)}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textView_01"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(0, 1)}" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/textView_11"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(1, 1)}" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textView_21"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 1)}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textView_00"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(0, 0)}" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/textView_10"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(1, 0)}" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textView_20"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 0)}" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
