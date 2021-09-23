@@ -14,7 +14,7 @@ class PlayerMapper @Inject constructor(
             return null
         }
         return Player(
-            id = entity.id,
+            id = entity.playerId,
             name = entity.name
         )
     }
@@ -24,7 +24,7 @@ class PlayerMapper @Inject constructor(
             return null
         }
         return PlayerEntity(
-            id = domainEntity.id,
+            playerId = domainEntity.id,
             name = domainEntity.name
         )
     }

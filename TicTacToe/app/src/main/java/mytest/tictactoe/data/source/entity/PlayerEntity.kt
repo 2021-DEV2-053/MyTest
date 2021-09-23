@@ -5,7 +5,7 @@ import androidx.room.*
 @Entity(tableName = "players", indices = [Index(value = ["name"], unique = true)])
 data class PlayerEntity(
         @PrimaryKey(autoGenerate = true)
-        val id : Int? = null,
+        val playerId : Int? = null,
         @ColumnInfo(name = "name")
         val name: String?
 )

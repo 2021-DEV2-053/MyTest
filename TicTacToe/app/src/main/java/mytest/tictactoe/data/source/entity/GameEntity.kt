@@ -6,21 +6,21 @@ import java.util.*
 @Entity(tableName = "games")
 data class GameEntity(
         @PrimaryKey(autoGenerate = true)
-        val id : Int? = null,
+        val gameId : Int? = null,
         @ColumnInfo(name = "createdAt")
         val createdAt: Date?,
         @ColumnInfo(name = "endedAt")
-        val endedAt: Date?,
+        val endedAt: Date? = null,
         @ColumnInfo(name = "status")
         val status: String?,
         @ColumnInfo(name = "player_x")
-        @Embedded val playerx: PlayerEntity?,
+        val playerxId: Long? = null,
         @ColumnInfo(name = "player_o")
-        @Embedded val playero: PlayerEntity?,
+        val playeroId: Long? = null,
         @ColumnInfo(name = "current_player")
-        @Embedded val currentPlayer: PlayerEntity?,
+        val currentPlayerId: Long? = null,
         @ColumnInfo(name = "winning_player")
-        @Embedded val winningPlayer: PlayerEntity?,
+        val winningPlayerId: Long? = null,
         @ColumnInfo(name = "losing_player")
-        @Embedded val losingPlayer: PlayerEntity?
+        val losingPlayerId: Long? = null
 )

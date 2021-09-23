@@ -1,6 +1,7 @@
 package mytest.tictactoe.util
 
 import mytest.tictactoe.data.source.entity.PlayerEntity
+import mytest.tictactoe.domain.model.Game
 import mytest.tictactoe.domain.model.Player
 
 /**
@@ -19,11 +20,13 @@ object TestData {
     )
 
     val playerEmptyEntity = PlayerEntity( name = "")
-    val player1Entity = PlayerEntity( name = "player 1")
-    val player2Entity = PlayerEntity( name = "player 2")
+    val player1Entity = PlayerEntity( playerId = 1, name = "player 1")
+    val player2Entity = PlayerEntity( playerId = 2, name = "player 2")
 
     val playersEntity = listOf(
         player1,
         player2
     )
+
+    val game = Game()
 }

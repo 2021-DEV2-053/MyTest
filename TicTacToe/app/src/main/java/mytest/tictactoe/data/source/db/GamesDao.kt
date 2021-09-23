@@ -12,11 +12,12 @@ interface GamesDao {
     @Query("SELECT * FROM games")
     suspend fun getAll(): List<GameEntity>
 
-    @Query("SELECT * FROM games WHERE id = :id")
+    @Transaction
+    @Query("SELECT * FROM games WHERE gameId = :id")
     suspend fun findGame(id: String): GameEntity?
 
     @Insert
-    suspend fun insertGame(game: GameEntity)
+    suspend fun insertGame(game: GameEntity): Long
 
     @Update
     suspend fun updateGame(game: GameEntity)
