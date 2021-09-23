@@ -11,6 +11,7 @@ import mytest.tictactoe.domain.repository.GamesRepository
 import mytest.tictactoe.domain.repository.PlayersRepository
 import mytest.tictactoe.result.ErrorType
 import mytest.tictactoe.result.Result
+import mytest.tictactoe.result.data
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,8 +26,8 @@ class NewGameViewModel @Inject constructor(
     private val _error = MutableStateFlow<ErrorType?>(null)
     val error : StateFlow<ErrorType?> = _error
 
-    private val _isStarting = MutableStateFlow(false)
-    val isStarting : StateFlow<Boolean> = _isStarting
+    private val _startTheGame = MutableStateFlow<Long?>(null)
+    val startTheGame : StateFlow<Long?> = _startTheGame
 
     init {
         fetchPlayers()
@@ -46,27 +47,13 @@ class NewGameViewModel @Inject constructor(
         }
     }
 
-
-    private fun insertPlayers(playerX: String, playerO: String) {
-        viewModelScope.launch {
-            val result =  playersRepository.insertPlayers(playerX, playerO)
-            when(result){
-                is Result.Success -> {
-                    _isStarting.value = true
-                }
-                is Result.Error -> {
-                    _error.value = result.errorType
-                }
-            }
-        }
-    }
-
     private fun startNewGame(playerX: String, playerO: String) {
         viewModelScope.launch {
             val result =  playersRepository.insertPlayers(playerX, playerO)
             when(result){
                 is Result.Success -> {
-                    _isStarting.value = true
+                    val players = result.data
+                    _startTheGame.value = gamesRepository.startNewGame(players[0], players[1]).data
                 }
                 is Result.Error -> {
                     _error.value = result.errorType
@@ -76,13 +63,9 @@ class NewGameViewModel @Inject constructor(
     }
 
     fun onStartClicked(playerX: String, playerO: String){
-        insertPlayers(playerX, playerO)
-
+        startNewGame(playerX, playerO)
     }
 
-    fun onStarted(){
-        _isStarting.value = false
-    }
     fun onErrorShowed(){
         _error.value = null
     }

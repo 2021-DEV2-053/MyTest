@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,10 +77,10 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
         }
 
         launchAndRepeatWithViewLifecycle{
-            viewModel.isStarting.collect { isStarting ->
-               if(isStarting){
+            viewModel.startTheGame.collect { gameID ->
+               if(gameID != null){
+                   val bundle = bundleOf("gameId" to gameID)
                    findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment)
-                   viewModel.onStarted()
                }
             }
         }

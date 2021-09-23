@@ -20,5 +20,8 @@
         android:name="mytest.tictactoe.ui.ingame.InGameFragment"
         android:label="@string/In_game"
         tools:layout="@layout/fragment_in_game" >
+        <argument
+            android:name="gameId"
+            app:argType="long"/>
     </fragment>
 </navigation>
