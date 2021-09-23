@@ -12,7 +12,7 @@ data class GameEntity(
         @ColumnInfo(name = "endedAt")
         val endedAt: Date? = null,
         @ColumnInfo(name = "status")
-        val status: Int?,
+        val status: String?,
         @ColumnInfo(name = "player_x")
         val playerxId: Long? = null,
         @ColumnInfo(name = "player_o")
