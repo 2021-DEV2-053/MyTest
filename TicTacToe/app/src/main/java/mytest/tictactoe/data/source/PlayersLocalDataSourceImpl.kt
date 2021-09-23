@@ -26,7 +26,7 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         return try{
             val playerEntity = playerDao.findPlayerByName(name)
             if(playerEntity != null){
-                Result.Success(playerMapper.mapFromEntity(playerEntity))
+                Result.Success(playerMapper.mapFromEntity(playerEntity)!!)
             }else{
                 Result.Error(Exception("Player not found"), ErrorType.NO_RESULTS_FOUND)
             }
@@ -41,7 +41,7 @@ class PlayersLocalDataSourceImpl @Inject constructor(
             playersName.forEach { name ->
                 val playerEntity = playerDao.findPlayerByName(name)
                 if(playerEntity != null){
-                    players.add(playerMapper.mapFromEntity(playerEntity))
+                    players.add(playerMapper.mapFromEntity(playerEntity)!!)
                 }
             }
             Result.Success(players)

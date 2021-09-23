@@ -1,18 +1,15 @@
 package mytest.tictactoe.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import mytest.tictactoe.data.repository.PlayersRepositoryImpl
 import mytest.tictactoe.domain.repository.PlayersRepository
 import mytest.tictactoe.result.ErrorType
-import mytest.tictactoe.result.succeeded
 import mytest.tictactoe.ui.newgame.NewGameViewModel
 import mytest.tictactoe.util.FakePlayersLocalDataSource
 import mytest.tictactoe.util.MainCoroutineRule
 import mytest.tictactoe.util.TestData
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

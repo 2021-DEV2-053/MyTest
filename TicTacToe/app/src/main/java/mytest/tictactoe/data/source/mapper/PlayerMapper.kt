@@ -7,16 +7,22 @@ import javax.inject.Inject
 
 class PlayerMapper @Inject constructor(
 
-): EntityMapper<PlayerEntity, Player> {
+): EntityMapper<PlayerEntity?, Player?> {
 
-    override fun mapFromEntity(entity: PlayerEntity): Player {
+    override fun mapFromEntity(entity: PlayerEntity?): Player? {
+        if(entity == null){
+            return null
+        }
         return Player(
             id = entity.id,
             name = entity.name
         )
     }
 
-    override fun mapToEntity(domainEntity: Player): PlayerEntity {
+    override fun mapToEntity(domainEntity: Player?): PlayerEntity? {
+        if(domainEntity == null){
+            return null
+        }
         return PlayerEntity(
             id = domainEntity.id,
             name = domainEntity.name
@@ -24,11 +30,11 @@ class PlayerMapper @Inject constructor(
     }
 
     fun mapFromEntityList(entities: List<PlayerEntity>): List<Player>{
-        return entities.map { mapFromEntity(it) }
+        return entities.map { mapFromEntity(it)!! }
     }
 
     fun mapToEntityList(players: List<Player>): List<PlayerEntity>{
-        return players.map { mapToEntity(it) }
+        return players.map { mapToEntity(it)!! }
     }
 
 }
