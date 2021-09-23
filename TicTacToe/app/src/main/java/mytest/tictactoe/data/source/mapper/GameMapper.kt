@@ -24,7 +24,12 @@ class GameMapper @Inject constructor(
             gameId = domainEntity.gameId,
             createdAt = domainEntity.createdAt,
             endedAt = domainEntity.endedAt,
-            status = domainEntity.status?.value()
+            status = domainEntity.status?.value(),
+            playerxId = domainEntity.playerX!!.id,
+            playeroId = domainEntity.playerO!!.id,
+            currentPlayerId = domainEntity.currentPlayer?.id,
+            winningPlayerId = domainEntity.winningPlayer?.id,
+            losingPlayerId = domainEntity.losingPlayer?.id,
         )
     }
 

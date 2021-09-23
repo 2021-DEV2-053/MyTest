@@ -10,6 +10,10 @@ class FakePlayersLocalDataSource: PlayersLocalDataSource {
         return Result.Success(TestData.players)
     }
 
+    override suspend fun getPlayerById(playerId: Long): Result<Player> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getPlayerByName(name: String): Result<Player> {
         TODO("Not yet implemented")
     }

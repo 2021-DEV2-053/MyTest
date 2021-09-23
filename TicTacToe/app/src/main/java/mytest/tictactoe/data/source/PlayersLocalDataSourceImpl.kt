@@ -22,6 +22,19 @@ class PlayersLocalDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getPlayerById(playerId: Long): Result<Player> {
+        return try{
+            val playerEntity = playerDao.findPlayerById(playerId)
+            if(playerEntity != null){
+                Result.Success(playerMapper.mapFromEntity(playerEntity)!!)
+            }else{
+                Result.Error(Exception("Player not found"), ErrorType.NO_RESULTS_FOUND)
+            }
+        }catch(e: Exception){
+            Result.Error(e)
+        }
+    }
+
     override suspend fun getPlayerByName(name: String): Result<Player> {
         return try{
             val playerEntity = playerDao.findPlayerByName(name)

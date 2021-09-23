@@ -2,7 +2,6 @@ package mytest.tictactoe.data.source.db
 
 import androidx.room.*
 import mytest.tictactoe.data.source.entity.PlayerEntity
-
 /**
  * Data Access Object for the [PlayerEntity] class.
  */
@@ -18,6 +17,9 @@ interface PlayersDao {
 
     @Query("SELECT * FROM players WHERE playerId IN (:playersIds)")
     suspend fun loadAllByIds(playersIds: LongArray): List<PlayerEntity>
+
+    @Query("SELECT * FROM players WHERE playerId = :playerId")
+    suspend fun findPlayerById(playerId: Long): PlayerEntity?
 
     @Query("SELECT * FROM players WHERE name LIKE :name")
     suspend fun findAllByName(name: String): List<PlayerEntity>
@@ -35,4 +37,5 @@ interface PlayersDao {
 
     @Delete
     suspend fun delete(user: PlayerEntity)
+
 }
