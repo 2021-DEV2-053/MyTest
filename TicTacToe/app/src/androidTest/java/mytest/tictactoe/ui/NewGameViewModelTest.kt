@@ -3,10 +3,13 @@ package mytest.tictactoe.ui
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import mytest.tictactoe.data.repository.GamesRepositoryImpl
 import mytest.tictactoe.data.repository.PlayersRepositoryImpl
+import mytest.tictactoe.domain.repository.GamesRepository
 import mytest.tictactoe.domain.repository.PlayersRepository
 import mytest.tictactoe.result.ErrorType
 import mytest.tictactoe.ui.newgame.NewGameViewModel
+import mytest.tictactoe.util.FakeGamesLocalDataSource
 import mytest.tictactoe.util.FakePlayersLocalDataSource
 import mytest.tictactoe.util.MainCoroutineRule
 import mytest.tictactoe.util.TestData
@@ -25,6 +28,7 @@ class NewGameViewModelTest {
 
     // Use repository to be injected into the viewmodel
     private lateinit var playersRepository: PlayersRepository
+    private lateinit var gamesRepository: GamesRepository
 
     // Executes tasks in the Architecture Components in the same thread
     @get:Rule
@@ -37,7 +41,8 @@ class NewGameViewModelTest {
     @Before
     fun setup() {
         playersRepository = PlayersRepositoryImpl(FakePlayersLocalDataSource())
-        newGameViewModel = NewGameViewModel(playersRepository)
+        gamesRepository = GamesRepositoryImpl(FakeGamesLocalDataSource())
+        newGameViewModel = NewGameViewModel(playersRepository, gamesRepository)
     }
 
     @Test
