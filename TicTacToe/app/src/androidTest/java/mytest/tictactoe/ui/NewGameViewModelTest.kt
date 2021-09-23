@@ -40,7 +40,6 @@ class NewGameViewModelTest {
     @get:Rule
     var coroutineRule = MainCoroutineRule()
 
-
     @Before
     fun setup() {
         // Using an in-memory database because the information stored here disappears when the

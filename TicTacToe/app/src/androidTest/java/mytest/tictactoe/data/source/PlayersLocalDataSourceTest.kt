@@ -1,4 +1,4 @@
-package mytest.tictactoe.data
+package mytest.tictactoe.data.source
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
@@ -6,11 +6,9 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import mytest.tictactoe.data.source.PlayersLocalDataSourceImpl
 import mytest.tictactoe.data.source.mapper.PlayerMapper
 import mytest.tictactoe.util.TestData
 import kotlinx.coroutines.test.runBlockingTest
-import mytest.tictactoe.data.source.PlayersLocalDataSource
 import mytest.tictactoe.data.source.db.AppDatabase
 import mytest.tictactoe.data.source.db.PlayersDao
 import mytest.tictactoe.result.Result.Success
