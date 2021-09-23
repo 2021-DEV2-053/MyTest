@@ -24,5 +24,8 @@ class GamesRepositoryImpl @Inject constructor(
         )
     }
 
+    override suspend fun getTheNewGame(gameId: Long): Result<Game> {
+        return gamesLocalDataSource.getGame(gameId)
+    }
 
 }

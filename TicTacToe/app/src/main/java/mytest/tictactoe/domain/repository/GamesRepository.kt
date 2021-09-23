@@ -16,7 +16,13 @@ interface GamesRepository {
     suspend fun getGames(): Result<List<Game>>
     /**
      *
-     * Insert new [Game]s.
+     * start a new [Game].
      */
     suspend fun startNewGame(playerX: Player, playerO: Player): Result<Long>
+    /**
+     *
+     * Return the new [Game].
+     */
+    suspend fun getTheNewGame(gameId: Long): Result<Game>
+
 }
