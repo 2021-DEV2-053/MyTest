@@ -80,7 +80,7 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
             viewModel.startTheGame.collect { gameID ->
                if(gameID != null){
                    val bundle = bundleOf("gameId" to gameID)
-                   findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment)
+                   findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment, bundle)
                }
             }
         }
