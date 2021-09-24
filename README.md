@@ -20,6 +20,7 @@ Data is observed using Kotlin Flows and the DataBinding Library binds UI compone
 - `Room` - Persistence of Data.
 - `Hilt` - Dependency Injection Framework.
 - `Navigation component` - to manage fragment operations.
+- `Material` -  for the user interface
 
 
 ### Screenshots
