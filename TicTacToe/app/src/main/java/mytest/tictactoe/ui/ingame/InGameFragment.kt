@@ -38,7 +38,7 @@ class InGameFragment : Fragment(R.layout.fragment_in_game) {
 
     private fun observeViewModel() {
         launchAndRepeatWithViewLifecycle{
-            viewModel.nextPlayer.collect { message ->
+            viewModel.messageToPlayer.collect { message ->
                 if(message != null){
                    binding.messageTextView.text = message
                 }

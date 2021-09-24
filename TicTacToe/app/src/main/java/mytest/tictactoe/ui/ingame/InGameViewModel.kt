@@ -36,11 +36,11 @@ class InGameViewModel @Inject constructor(
     val cell : StateFlow<Cell?> = _cell
 
     // Set which player have to play
-    private val _nextPlayer = MutableStateFlow<String?>(null)
-    val nextPlayer : StateFlow<String?> = _nextPlayer
+    private val _messageToPlayer = MutableStateFlow<String?>(null)
+    val messageToPlayer : StateFlow<String?> = _messageToPlayer
 
     init{
-        _nextPlayer.value = "$currentPlayer is your turn"
+        _messageToPlayer.value = "$currentPlayer is your turn"
         fetchTheGame()
     }
     private fun fetchTheGame() {
@@ -79,20 +79,21 @@ class InGameViewModel @Inject constructor(
     //switch the players and update the UI
     fun nextPlayer(){
         currentPlayer = if(currentPlayer == playerX) playerO else playerX
-        _nextPlayer.value = "$currentPlayer is your turn"
+        _messageToPlayer.value = "$currentPlayer is your turn"
     }
 
     //Check is the cells is completed or if we get a winner
     fun isFinish(): Boolean{
         //check if the cells is all completed
         if(counterOfMove == 9){
+            _messageToPlayer.value = "No one win !"
             endGame()
             return true
         }
 
         //check if we have a winner
         if(isWin()){
-            _nextPlayer.value = "$theWinner is the winner !!!"
+            _messageToPlayer.value = "$theWinner is the winner !!!"
             endGame()
             return true
         }
