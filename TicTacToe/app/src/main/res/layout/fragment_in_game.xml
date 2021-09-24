@@ -22,6 +22,34 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/player_x_TextViewtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.playerX}"
+                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    <TextView
+                        android:id="@+id/vs_TextViewtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="VS"
+                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+                    <TextView
+                        android:id="@+id/player_o_TextViewtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.playerO}"
+                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+                </LinearLayout>
 
             </LinearLayout>
             <LinearLayout

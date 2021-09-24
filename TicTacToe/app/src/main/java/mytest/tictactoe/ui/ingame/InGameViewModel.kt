@@ -17,6 +17,9 @@ class InGameViewModel @Inject constructor(
 ) : ViewModel(){
 
     val gameId: Long? = savedStateHandle.get("gameId")
+    val playerX: String? = savedStateHandle.get("playerx")
+    val playerO: String? = savedStateHandle.get("playero")
+
     var game: Game? = null
 
     init{
