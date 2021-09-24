@@ -29,6 +29,9 @@ class NewGameFragmentTest {
         hiltRule.inject()
     }
 
+    /**
+     * check if the navigation is working between fragment (ToInGameFragment)
+     * */
     @Test
     fun testNavigationToInGameFragment() {
         // GIVEN - On the "NewGame" screen.
@@ -43,7 +46,9 @@ class NewGameFragmentTest {
         // THEN - Verify that we navigated to the InGame screen.
         assertEquals(navController.currentDestination?.id, R.id.inGameFragment)
     }
-
+    /**
+     * check if we don't move to the next fragment, because of an error ( input = same name )
+     * */
     @Test
     fun testNavigationToInGameFragmentWithSameName() {
         // GIVEN - On the "NewGame" screen.

@@ -43,7 +43,9 @@ class NewGameViewModelTest {
         gamesRepository = GamesRepositoryImpl(FakeGamesLocalDataSource())
         newGameViewModel = NewGameViewModel(playersRepository, gamesRepository)
     }
-
+    /**
+     * check if players are loaded correclty
+     * */
     @Test
     fun playersIsLoaded()  {
         // Observe viewmodel to load players
@@ -51,7 +53,9 @@ class NewGameViewModelTest {
         // Check that data were loaded correctly
         assertThat(players.size).isEqualTo(TestData.players.size)
     }
-
+    /**
+     * check if we receive the error ERROR_PLAYERS_NAME_EMPTY
+     * */
     @Test
     fun verifyErrorResultWithAllEmptyNameTest() {
         newGameViewModel.playerX = TestData.playerEmpty.name!!
@@ -59,7 +63,9 @@ class NewGameViewModelTest {
         newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYERS_NAME_EMPTY)
     }
-
+    /**
+     * check if we receive the error ERROR_PLAYER_O_EMPTY
+     * */
     @Test
     fun verifyErrorResultWithPlayerOEmptyTest() {
         newGameViewModel.playerX = TestData.playerX.name!!
@@ -67,16 +73,19 @@ class NewGameViewModelTest {
         newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYER_O_EMPTY)
     }
-
+    /**
+     * check if we receive the error ERROR_PLAYER_X_EMPTY
+     * */
     @Test
     fun verifyErrorResultWithPlayerXEmptyTest() {
         newGameViewModel.playerX = TestData.playerEmpty.name!!
         newGameViewModel.playerO = TestData.playerO.name!!
         newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYER_X_EMPTY)
-
     }
-
+    /**
+     * check if we receive the error ERROR_PLAYERS_CONFLICT_NAME
+     * */
     @Test
     fun verifyErrorResultWithTheSameNameTest() {
         newGameViewModel.playerX = TestData.playerO.name!!

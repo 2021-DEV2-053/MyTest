@@ -42,6 +42,12 @@ class InGameViewModelTest {
         inGameViewModel = InGameViewModel(handle, gamesRepository)
     }
 
+    /**
+     * check if we start well with the playerX, that's mean we get data from Bundle(navigation)
+     * X | . | .
+     * . | . | .
+     * . | . | .
+     * */
     @Test
     fun verifyIfTheCurrentPlayerIsThePlayerX()  {
         val currentPlayer = inGameViewModel.currentPlayer
@@ -49,7 +55,12 @@ class InGameViewModelTest {
         assertThat(currentPlayer).isEqualTo(TestData.playerX.name)
     }
 
-
+    /**
+     * check if the first move works ( 0, 0 ), that's means that we can play
+     * X | . | .
+     * . | . | .
+     * . | . | .
+     * */
     @Test
     fun verifyIfTheFirstMoveIsPlayedCorrectly()  {
         inGameViewModel.onCellClicked(0,0)
@@ -63,7 +74,12 @@ class InGameViewModelTest {
 
         assertThat(isCellEmpty).isFalse()
     }
-
+    /**
+     * check if the second Player (O) play at the same position that already played ( O,O )
+     * X | . | .
+     * . | . | .
+     * . | . | .
+     * */
     @Test
     fun verifyThatWeCanNotPlayAtTheSameCell()  {
         inGameViewModel.onCellClicked(0,0)
@@ -76,7 +92,9 @@ class InGameViewModelTest {
         assertThat(counterOfMove).isEqualTo(NewCounterOfMove)
         assertThat(currentPlayer).isEqualTo(NewCurrentPlayer)
     }
-
+    /**
+     * check if the CurrentPlayer is changed after playing a move  ( O,O )
+     * */
     @Test
     fun verifyIfTheNextPlayerIsCorrect()  {
         val currentPlayer = inGameViewModel.currentPlayer
@@ -86,15 +104,14 @@ class InGameViewModelTest {
         assertThat(currentPlayer).isEqualTo(TestData.playerX.name)
         assertThat(nextPlayer).isEqualTo(TestData.playerO.name)
     }
-
+    /**
+     * check if the game is finish after all cells are completed and that we have no winner.
+     * X | X | O
+     * O | X | X
+     * X | O | O
+     * */
     @Test
     fun verifyIfWeFinishAfter9Moves()  {
-        //combination that we can't have a winner
-        /*
-        * X | X | O
-        * O | X | X
-        * X | O | O
-        * */
         inGameViewModel.onCellClicked(0,0)
         inGameViewModel.onCellClicked(2,2)
         inGameViewModel.onCellClicked(1,1)
@@ -111,7 +128,12 @@ class InGameViewModelTest {
         assertThat(counterOfMove).isEqualTo(9)
         assertThat(isFinish).isTrue()
     }
-
+    /**
+     * check if we have a winner.
+     * . | . | O
+     * X | O | .
+     * X | . | .
+     * */
     @Test
     fun verifyIfWeHaveAWinner()  {
         inGameViewModel.cells = Array(3) {
@@ -129,7 +151,12 @@ class InGameViewModelTest {
         assertThat(isWin).isTrue()
         assertThat(theWinner).isNotEmpty()
     }
-
+    /**
+     * check if we have the good winner Player(X), when he play the last move ( O,O )
+     * . | X | O
+     * X | . | O
+     * X | . | .
+     * */
     @Test
     fun verifyIfWeHaveTheGoodWinner()  {
         val playerX = TestData.playerX.name
@@ -149,7 +176,12 @@ class InGameViewModelTest {
         assertThat(isWin).isTrue()
         assertThat(theWinner).isEqualTo(playerX)
     }
-
+    /**
+     * check if we have a winner after a move (2, 0) to get a diagonal sequence
+     * . | X | .
+     * O | X | O
+     * X | . | .
+     * */
     @Test
     fun verifyIfDiagonalVictoryWork()  {
         val playerX = TestData.playerX.name
