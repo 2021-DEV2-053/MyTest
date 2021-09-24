@@ -18,7 +18,5 @@ class FakeGamesLocalDataSource: GamesLocalDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateGame(game: Game) {
-        TODO("Not yet implemented")
-    }
+    override suspend fun updateGame(game: Game) {}
 }
