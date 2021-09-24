@@ -7,8 +7,8 @@ To build a project, enter the project directory and use the `./gradlew assemble`
 
 ### Requirements
 - buildToolsVersion `31.0.0`
-- compileSdk `31`
-- minSdk `21`
+- compileSdk `31` //API
+- minSdk `21` //API
 
 ### Architecture
 My project architecture is based on the "Android Architecture Components" from Google, to provide a cleaner code, with clear separation between the view, the data and the business logic. 
