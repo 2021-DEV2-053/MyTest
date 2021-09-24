@@ -8,4 +8,5 @@ interface GamesLocalDataSource{
     suspend fun getGames(): Result<List<Game>>
     suspend fun getGame(id: Long): Result<Game>
     suspend fun insertGame(game: Game): Result<Long>
+    suspend fun updateGame(game: Game)
 }

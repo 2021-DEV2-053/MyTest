@@ -5,6 +5,7 @@ import mytest.tictactoe.domain.model.Game
 import mytest.tictactoe.domain.model.Player
 import mytest.tictactoe.result.Result
 import mytest.tictactoe.domain.repository.GamesRepository
+import java.util.*
 import javax.inject.Inject
 
 class GamesRepositoryImpl @Inject constructor(
@@ -26,6 +27,11 @@ class GamesRepositoryImpl @Inject constructor(
 
     override suspend fun getTheNewGame(gameId: Long): Result<Game> {
         return gamesLocalDataSource.getGame(gameId)
+    }
+
+    override suspend fun endGame(game: Game) {
+        game.endedAt = Date()
+        gamesLocalDataSource.updateGame(game)
     }
 
 }

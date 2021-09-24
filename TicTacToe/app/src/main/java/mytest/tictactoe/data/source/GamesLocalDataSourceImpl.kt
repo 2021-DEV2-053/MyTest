@@ -43,4 +43,12 @@ class GamesLocalDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateGame(game: Game) {
+        try{
+            Result.Success( gamesDao.updateGame(gameMapper.mapToEntity(game)))
+        }catch(e: Exception){
+            Result.Error(e)
+        }
+    }
+
 }

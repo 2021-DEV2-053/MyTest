@@ -25,4 +25,10 @@ interface GamesRepository {
      */
     suspend fun getTheNewGame(gameId: Long): Result<Game>
 
+    /**
+     *
+     * Set The EndedDate.
+     */
+    suspend fun endGame(game: Game)
+
 }

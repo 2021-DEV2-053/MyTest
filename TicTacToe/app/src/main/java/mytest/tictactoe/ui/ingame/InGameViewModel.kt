@@ -57,6 +57,12 @@ class InGameViewModel @Inject constructor(
         }
     }
 
+    private fun endGame() {
+        viewModelScope.launch {
+            gamesRepository.endGame(game!!)
+        }
+    }
+
 
     //set the cells with a new value and update the UI
     fun makeMove(x: Int, y: Int){
@@ -79,11 +85,15 @@ class InGameViewModel @Inject constructor(
     //Check is the cells is completed or if we get a winner
     fun isFinish(): Boolean{
         //check if the cells is all completed
-        if(counterOfMove == 9)
+        if(counterOfMove == 9){
+            endGame()
             return true
+        }
+
         //check if we have a winner
         if(isWin()){
             _nextPlayer.value = "$theWinner is the winner !!!"
+            endGame()
             return true
         }
         return false
