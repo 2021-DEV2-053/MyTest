@@ -11,6 +11,7 @@ import mytest.tictactoe.util.TestData
 import kotlinx.coroutines.test.runBlockingTest
 import mytest.tictactoe.data.source.db.AppDatabase
 import mytest.tictactoe.data.source.db.PlayersDao
+import mytest.tictactoe.domain.model.Game
 import mytest.tictactoe.result.Result.Success
 import mytest.tictactoe.result.data
 import mytest.tictactoe.result.succeeded
@@ -55,7 +56,10 @@ class PlayersLocalDataSourceTest {
     fun closeDb() {
         db.close()
     }
-
+    /**
+     *
+     * check if we can insert and get a specific player by name
+     */
     @Test
     fun insertAndGetPlayer1Test() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1)
@@ -66,7 +70,10 @@ class PlayersLocalDataSourceTest {
         assertThat(playerDomain.succeeded).isTrue()
         assertThat(playerDomain.data!!.name).isEqualTo(TestData.player1.name)
     }
-
+    /**
+     *
+     * check if we can insert 2 players
+     */
     @Test
     fun insertTwoPlayersTest() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1, TestData.player2)
@@ -81,7 +88,10 @@ class PlayersLocalDataSourceTest {
         assertThat(listOfPlayer.data!!.size).isEqualTo(2)
 
     }
-
+    /**
+     *
+     * check if we can insert 2 players with same name, it should insert only 1
+     */
     @Test
     fun insertTwoPlayersWithSameNameTest() = runBlockingTest {
         val result = playersLocalDataSource.insertPlayers(TestData.player1, TestData.player1)

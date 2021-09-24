@@ -11,6 +11,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import mytest.tictactoe.data.source.db.AppDatabase
 import mytest.tictactoe.data.source.db.GamesDao
 import mytest.tictactoe.data.source.mapper.GameMapper
+import mytest.tictactoe.domain.model.Game
 import mytest.tictactoe.result.data
 import mytest.tictactoe.result.succeeded
 import org.junit.*
@@ -54,14 +55,20 @@ class GamesLocalDataSourceTest {
     fun closeDb() {
         db.close()
     }
-
+    /**
+     *
+     * check if the [Game] inserted.
+     */
     @Test
     fun insertNewGameTest() = runBlockingTest {
         val result = gamesLocalDataSource.insertGame(TestData.game)
         assertThat(result.succeeded).isTrue()
         assertThat(result.data).isEqualTo(1)
     }
-
+    /**
+     *
+     * check if we can a specific [Game], we need it to start the game
+     */
     @Test
     fun findASpecificGame() = runBlockingTest {
         gamesLocalDataSource.insertGame(TestData.game)

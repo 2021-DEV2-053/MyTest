@@ -43,7 +43,10 @@ class PlayersRepositoryTest {
         assertThat(result.succeeded).isTrue()
         assertThat(result.data!!.size).isEqualTo(TestData.players.size)
     }
-
+    /**
+     *
+     * check if when we insert the players without names, it should return ERROR_PLAYERS_NAME_EMPTY
+     */
     @Test
     fun insertPlayersWithEmptyNameTest() = runBlockingTest {
         val result = playersRepository.insertPlayers("", "")
@@ -51,7 +54,10 @@ class PlayersRepositoryTest {
         assertThat(result).isInstanceOf(Error::class.java)
         assertThat((result as Error).errorType).isEqualTo(ErrorType.ERROR_PLAYERS_NAME_EMPTY)
     }
-
+    /**
+     *
+     * check if when we insert the playerO with no name, it should return ERROR_PLAYER_O_EMPTY
+     */
     @Test
     fun insertPlayersWithPlayerONameEmptyTest() = runBlockingTest {
         val result = playersRepository.insertPlayers(TestData.player1.name!!, "")
@@ -59,7 +65,10 @@ class PlayersRepositoryTest {
         assertThat(result).isInstanceOf(Error::class.java)
         assertThat((result as Error).errorType).isEqualTo(ErrorType.ERROR_PLAYER_O_EMPTY)
     }
-
+    /**
+     *
+     * check if when we insert the playerX with no name, it should return ERROR_PLAYER_X_EMPTY
+     */
     @Test
     fun insertPlayersWithPlayerXNameEmptyTest() = runBlockingTest {
         val result = playersRepository.insertPlayers("", TestData.player1.name!!)
@@ -67,7 +76,10 @@ class PlayersRepositoryTest {
         assertThat(result).isInstanceOf(Error::class.java)
         assertThat((result as Error).errorType).isEqualTo(ErrorType.ERROR_PLAYER_X_EMPTY)
     }
-
+    /**
+     *
+     * check if when we insert 2 players with same name, it should return ERROR_PLAYERS_CONFLICT_NAME
+     */
     @Test
     fun insertPlayersWithSameNameTest() = runBlockingTest {
         val result = playersRepository.insertPlayers(TestData.player1.name!!, TestData.player1.name!!)
