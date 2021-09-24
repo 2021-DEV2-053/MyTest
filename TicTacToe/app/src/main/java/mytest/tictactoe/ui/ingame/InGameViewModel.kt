@@ -130,6 +130,29 @@ class InGameViewModel @Inject constructor(
             theWinner = playerO
             isWin = true
         }
+
+        //by diagonal
+        var diag0 = ""
+        var diag1 = ""
+        for ((rowId, column) in cells.withIndex()) {
+            diag0 += column[0]
+            if(rowId == 1) diag0 += column[1]
+            if(rowId == 2) diag0 += column[2]
+
+            diag1 += column[2]
+            if(rowId == 1) diag1 += column[1]
+            if(rowId == 2) diag1 += column[0]
+
+        }
+        if(diag0 == "XXX" || diag1 == "XXX"){
+            theWinner = playerX
+            isWin = true
+        }
+        if(diag0 == "OOO" || diag1 == "OOO"){
+            theWinner = playerO
+            isWin = true
+        }
+
         return isWin
     }
 

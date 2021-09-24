@@ -71,42 +71,42 @@
                 android:layout_weight="1"
                 android:orientation="horizontal" >
                 <TextView
-                    android:id="@+id/textView_02"
+                    android:id="@+id/textView_00"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(0, 2)}"/>
+                    android:onClick="@{() -> viewModel.onCellClicked(0, 0)}"/>
                 <View
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:background="@color/black"
                     android:gravity="center" />
                 <TextView
-                    android:id="@+id/textView_12"
+                    android:id="@+id/textView_10"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(1, 2)}" />
+                    android:onClick="@{() -> viewModel.onCellClicked(1, 0)}" />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:background="@color/black"
                     android:gravity="center"/>
                 <TextView
-                    android:id="@+id/textView_22"
+                    android:id="@+id/textView_20"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(2, 2)}" />
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 0)}" />
             </LinearLayout>
 
             <View
@@ -169,28 +169,28 @@
                 android:layout_weight="1"
                 android:orientation="horizontal" >
                 <TextView
-                    android:id="@+id/textView_00"
+                    android:id="@+id/textView_02"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(0, 0)}" />
+                    android:onClick="@{() -> viewModel.onCellClicked(0, 2)}" />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:background="@color/black"
                     android:gravity="center" />
                 <TextView
-                    android:id="@+id/textView_10"
+                    android:id="@+id/textView_12"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(1, 0)}" />
+                    android:onClick="@{() -> viewModel.onCellClicked(1, 2)}" />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
@@ -198,12 +198,12 @@
                     android:gravity="center"/>
 
                 <TextView
-                    android:id="@+id/textView_20"
+                    android:id="@+id/textView_22"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="@{() -> viewModel.onCellClicked(2, 0)}"
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 2)}"
                     android:text="."
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>

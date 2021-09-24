@@ -110,7 +110,7 @@ class InGameViewModelTest {
     @Test
     fun verifyIfWeHaveAWinner()  {
         inGameViewModel.cells = Array(3) {
-            arrayOf('X', '.', 'O').toCharArray()
+            arrayOf('.', '.', 'O').toCharArray()
             arrayOf('X', 'O', '.').toCharArray()
             arrayOf('X', '.', '.').toCharArray()
         }
@@ -130,13 +130,13 @@ class InGameViewModelTest {
         val playerX = TestData.playerX.name
 
         inGameViewModel.cells = Array(3) {
-            arrayOf('X', 'X', 'X').toCharArray()
-            arrayOf('X', 'X', 'X').toCharArray()
-            arrayOf('X', 'X', '.').toCharArray()
+            arrayOf('.', 'X', 'O').toCharArray()
+            arrayOf('X', '.', 'O').toCharArray()
+            arrayOf('X', '.', '.').toCharArray()
         }
 
         // play the last move
-        inGameViewModel.onCellClicked(2,0)
+        inGameViewModel.onCellClicked(0,0)
 
         val isWin = inGameViewModel.isWin()
         val theWinner = inGameViewModel.theWinner
