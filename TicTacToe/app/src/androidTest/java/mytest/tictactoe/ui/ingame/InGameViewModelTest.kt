@@ -89,16 +89,21 @@ class InGameViewModelTest {
 
     @Test
     fun verifyIfWeFinishAfter9Moves()  {
-
+        //combination that we can't have a winner
+        /*
+        * X | X | O
+        * O | X | X
+        * X | O | O
+        * */
         inGameViewModel.onCellClicked(0,0)
-        inGameViewModel.onCellClicked(0,1)
-        inGameViewModel.onCellClicked(0,2)
-        inGameViewModel.onCellClicked(1,0)
-        inGameViewModel.onCellClicked(1,1)
-        inGameViewModel.onCellClicked(1,2)
-        inGameViewModel.onCellClicked(2,0)
-        inGameViewModel.onCellClicked(2,1)
         inGameViewModel.onCellClicked(2,2)
+        inGameViewModel.onCellClicked(1,1)
+        inGameViewModel.onCellClicked(2,0)
+        inGameViewModel.onCellClicked(1,0)
+        inGameViewModel.onCellClicked(0,1)
+        inGameViewModel.onCellClicked(2,1)
+        inGameViewModel.onCellClicked(1,2)
+        inGameViewModel.onCellClicked(0,2)
 
         val counterOfMove = inGameViewModel.counterOfMove
         val isFinish = inGameViewModel.isFinish()
@@ -145,6 +150,25 @@ class InGameViewModelTest {
         assertThat(theWinner).isEqualTo(playerX)
     }
 
+    @Test
+    fun verifyIfDiagonalVictoryWork()  {
+        val playerX = TestData.playerX.name
+
+        inGameViewModel.cells = Array(3) {
+            arrayOf('.', 'X', '.').toCharArray()
+            arrayOf('O', 'X', 'O').toCharArray()
+            arrayOf('X', '.', '.').toCharArray()
+        }
+
+        // play the last move
+        inGameViewModel.onCellClicked(2,0)
+
+        val isWin = inGameViewModel.isWin()
+        val theWinner = inGameViewModel.theWinner
+
+        assertThat(isWin).isTrue()
+        assertThat(theWinner).isEqualTo(playerX)
+    }
 
 
 }
