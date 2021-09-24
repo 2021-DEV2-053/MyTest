@@ -24,8 +24,8 @@ Data is observed using Kotlin Flows and the DataBinding Library binds UI compone
 
 
 ### Screenshots
-Enter your Names
+Screen of NewGame
 ![alt text](https://github.com/2021-DEV2-053/MyTest/blob/main/resources/device-2021-09-24-155523.png?raw=true)
-
+Screen of InGame
 And then Enjoy it !
 ![alt text](https://github.com/2021-DEV2-053/MyTest/blob/main/resources/device-2021-09-24-155757.png?raw=true)
