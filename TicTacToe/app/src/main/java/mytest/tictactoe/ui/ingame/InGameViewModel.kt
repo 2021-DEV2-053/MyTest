@@ -1,11 +1,11 @@
 package mytest.tictactoe.ui.ingame
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import mytest.tictactoe.domain.model.Game
 import mytest.tictactoe.domain.repository.GamesRepository
 import mytest.tictactoe.result.Result
 import javax.inject.Inject
@@ -17,6 +17,7 @@ class InGameViewModel @Inject constructor(
 ) : ViewModel(){
 
     val gameId: Long? = savedStateHandle.get("gameId")
+    var game: Game? = null
 
     init{
         fetchTheGame()
@@ -26,7 +27,7 @@ class InGameViewModel @Inject constructor(
             val result = gamesRepository.getTheNewGame(gameId!!)
             when(result){
                 is Result.Success -> {
-
+                    game = result.data
                 }
                 is Result.Error -> {
 

@@ -1,4 +1,4 @@
-package mytest.tictactoe.ui
+package mytest.tictactoe.ui.newgame
 
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
@@ -10,7 +10,6 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import mytest.tictactoe.R
 import mytest.tictactoe.launchFragmentInHiltContainer
-import mytest.tictactoe.ui.newgame.NewGameFragment
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

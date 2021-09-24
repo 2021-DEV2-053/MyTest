@@ -39,9 +39,9 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
         binding.startButton.setOnClickListener {
             binding.progressCircular.visibility = VISIBLE
             binding.startButton.visibility = GONE
-            val playerX = binding.playerXAutoCompleteTextView.text.toString()
-            val playerO = binding.playerOAutoCompleteTextView.text.toString()
-            viewModel.onStartClicked(playerX, playerO)
+            viewModel.playerX = binding.playerXAutoCompleteTextView.text.toString()
+            viewModel.playerO = binding.playerOAutoCompleteTextView.text.toString()
+            viewModel.onStartClicked()
         }
         binding.playerXAutoCompleteTextView.setOnItemClickListener() { parent, _, position, id ->
             val player = parent.adapter.getItem(position) as Player?
@@ -79,7 +79,11 @@ class NewGameFragment : Fragment(R.layout.fragment_new_game) {
         launchAndRepeatWithViewLifecycle{
             viewModel.startTheGame.collect { gameID ->
                if(gameID != null){
-                   val bundle = bundleOf("gameId" to gameID)
+                   val bundle = bundleOf(
+                       "gameId" to gameID,
+                       "playerx" to viewModel.playerX,
+                       "playero" to viewModel.playerO
+                   )
                    findNavController().navigate(R.id.action_newGameFragment_to_inGameFragment, bundle)
                }
             }

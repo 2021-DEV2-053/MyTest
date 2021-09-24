@@ -18,8 +18,8 @@ class GamesRepositoryImpl @Inject constructor(
     override suspend fun startNewGame(playerX: Player, playerO: Player): Result<Long> {
         return gamesLocalDataSource.insertGame(
             Game(
-                playerX = playerX,
-                playerO = playerO
+                playerX = playerX.id,
+                playerO = playerO.id
             )
         )
     }

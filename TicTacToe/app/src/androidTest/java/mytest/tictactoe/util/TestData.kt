@@ -33,10 +33,10 @@ object TestData {
     val playerX = Player( id= 1, name = "player 1")
     val playerO = Player( id= 2, name = "player 2")
 
-    val game = Game(gameId = 1, playerX = playerX, playerO = playerO  )
+    val game = Game(gameId = 1, playerX = playerX.id, playerO = playerO.id  )
 
-    val game1 = Game(gameId = 1, playerX = playerX, playerO = playerO  )
-    val game2 = Game(gameId = 2, playerX = playerX, playerO = playerO  )
+    val game1 = Game(gameId = 1, playerX = playerX.id, playerO = playerO.id )
+    val game2 = Game(gameId = 2, playerX = playerX.id, playerO = playerO.id  )
 
     val games = listOf(
         game1,

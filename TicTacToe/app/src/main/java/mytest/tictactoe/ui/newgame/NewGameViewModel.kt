@@ -29,6 +29,9 @@ class NewGameViewModel @Inject constructor(
     private val _startTheGame = MutableStateFlow<Long?>(null)
     val startTheGame : StateFlow<Long?> = _startTheGame
 
+    var playerX =""
+    var playerO =""
+
     init {
         fetchPlayers()
     }
@@ -62,7 +65,7 @@ class NewGameViewModel @Inject constructor(
         }
     }
 
-    fun onStartClicked(playerX: String, playerO: String){
+    fun onStartClicked(){
         startNewGame(playerX, playerO)
     }
 

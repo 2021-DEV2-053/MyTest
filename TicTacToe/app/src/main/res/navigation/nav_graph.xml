@@ -23,5 +23,11 @@
         <argument
             android:name="gameId"
             app:argType="long"/>
+        <argument
+            android:name="playerx"
+            app:argType="string"/>
+        <argument
+            android:name="playero"
+            app:argType="string"/>
     </fragment>
 </navigation>

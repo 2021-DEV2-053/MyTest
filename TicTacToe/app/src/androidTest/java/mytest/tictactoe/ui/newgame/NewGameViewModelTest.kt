@@ -1,4 +1,4 @@
-package mytest.tictactoe.ui
+package mytest.tictactoe.ui.newgame
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
@@ -8,7 +8,6 @@ import mytest.tictactoe.data.repository.PlayersRepositoryImpl
 import mytest.tictactoe.domain.repository.GamesRepository
 import mytest.tictactoe.domain.repository.PlayersRepository
 import mytest.tictactoe.result.ErrorType
-import mytest.tictactoe.ui.newgame.NewGameViewModel
 import mytest.tictactoe.util.FakeGamesLocalDataSource
 import mytest.tictactoe.util.FakePlayersLocalDataSource
 import mytest.tictactoe.util.MainCoroutineRule
@@ -54,21 +53,38 @@ class NewGameViewModelTest {
     }
 
     @Test
-    fun verifyErrorResultTest() {
-        newGameViewModel.onStartClicked("","")
+    fun verifyErrorResultWithAllEmptyNameTest() {
+        newGameViewModel.playerX = TestData.playerEmpty.name!!
+        newGameViewModel.playerO = TestData.playerEmpty.name!!
+        newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYERS_NAME_EMPTY)
+    }
 
-        newGameViewModel.onStartClicked("test","")
+    @Test
+    fun verifyErrorResultWithPlayerOEmptyTest() {
+        newGameViewModel.playerX = TestData.playerX.name!!
+        newGameViewModel.playerO = TestData.playerEmpty.name!!
+        newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYER_O_EMPTY)
+    }
 
-        newGameViewModel.onStartClicked("","test")
+    @Test
+    fun verifyErrorResultWithPlayerXEmptyTest() {
+        newGameViewModel.playerX = TestData.playerEmpty.name!!
+        newGameViewModel.playerO = TestData.playerO.name!!
+        newGameViewModel.onStartClicked()
         assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYER_X_EMPTY)
-
-        newGameViewModel.onStartClicked("test1","test1")
-        assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYERS_CONFLICT_NAME)
 
     }
 
+    @Test
+    fun verifyErrorResultWithTheSameNameTest() {
+        newGameViewModel.playerX = TestData.playerO.name!!
+        newGameViewModel.playerO = TestData.playerO.name!!
+        newGameViewModel.onStartClicked()
+        assertThat(newGameViewModel.error.value).isEqualTo(ErrorType.ERROR_PLAYERS_CONFLICT_NAME)
+
+    }
 
 
 }

@@ -3,7 +3,6 @@ package mytest.tictactoe.data.source.mapper
 import mytest.tictactoe.data.source.entity.GameEntity
 import mytest.tictactoe.data.util.EntityMapper
 import mytest.tictactoe.domain.model.Game
-import mytest.tictactoe.domain.model.GameStatus
 import javax.inject.Inject
 
 class GameMapper @Inject constructor(
@@ -15,7 +14,9 @@ class GameMapper @Inject constructor(
             gameId = entity.gameId,
             createdAt = entity.createdAt,
             endedAt = entity.endedAt,
-            status = GameStatus.valueOf(entity.status!!)
+            playerX = entity.playerxId,
+            playerO = entity.playeroId,
+            winningPlayer = entity.winningPlayerId
         )
     }
 
@@ -24,12 +25,9 @@ class GameMapper @Inject constructor(
             gameId = domainEntity.gameId,
             createdAt = domainEntity.createdAt,
             endedAt = domainEntity.endedAt,
-            status = domainEntity.status?.value(),
-            playerxId = domainEntity.playerX!!.id,
-            playeroId = domainEntity.playerO!!.id,
-            currentPlayerId = domainEntity.currentPlayer?.id,
-            winningPlayerId = domainEntity.winningPlayer?.id,
-            losingPlayerId = domainEntity.losingPlayer?.id,
+            playerxId = domainEntity.playerX,
+            playeroId = domainEntity.playerO,
+            winningPlayerId = domainEntity.winningPlayer
         )
     }
 

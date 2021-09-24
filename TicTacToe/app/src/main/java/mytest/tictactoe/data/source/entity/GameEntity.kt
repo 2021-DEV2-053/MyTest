@@ -11,16 +11,10 @@ data class GameEntity(
         val createdAt: Date?,
         @ColumnInfo(name = "endedAt")
         val endedAt: Date? = null,
-        @ColumnInfo(name = "status")
-        val status: String?,
         @ColumnInfo(name = "player_x")
         val playerxId: Long? = null,
         @ColumnInfo(name = "player_o")
         val playeroId: Long? = null,
-        @ColumnInfo(name = "current_player")
-        val currentPlayerId: Long? = null,
         @ColumnInfo(name = "winning_player")
-        val winningPlayerId: Long? = null,
-        @ColumnInfo(name = "losing_player")
-        val losingPlayerId: Long? = null
+        val winningPlayerId: Long? = null
 )
