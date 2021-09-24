@@ -65,7 +65,7 @@ class InGameViewModelTest {
     }
 
     @Test
-    fun verifyThatWeCanPlayAtTheSameCell()  {
+    fun verifyThatWeCanNotPlayAtTheSameCell()  {
         inGameViewModel.onCellClicked(0,0)
         val counterOfMove = inGameViewModel.counterOfMove
         val currentPlayer = inGameViewModel.currentPlayer
@@ -74,7 +74,7 @@ class InGameViewModelTest {
         val NewCurrentPlayer = inGameViewModel.currentPlayer
 
         assertThat(counterOfMove).isEqualTo(NewCounterOfMove)
-        assertThat(NewCurrentPlayer).isEqualTo(NewCurrentPlayer)
+        assertThat(currentPlayer).isEqualTo(NewCurrentPlayer)
     }
 
     @Test
