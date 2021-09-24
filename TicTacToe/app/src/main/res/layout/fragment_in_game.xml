@@ -21,7 +21,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:orientation="horizontal" >
+                android:orientation="vertical" >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -29,11 +29,11 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView
-                        android:id="@+id/player_x_TextViewtext"
+                        android:id="@+id/player_x_TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.playerX}"
-                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+                        android:text="@{`X -> ` + viewModel.playerX}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
                         android:id="@+id/vs_TextViewtext"
                         android:layout_width="wrap_content"
@@ -41,16 +41,29 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:text="VS"
-                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+                        android:textColor="@color/blue_700"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                     <TextView
-                        android:id="@+id/player_o_TextViewtext"
+                        android:id="@+id/player_o_TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.playerO}"
+                        android:text="@{`O -> ` + viewModel.playerO}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/message_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue_500"
                         android:textAppearance="?android:attr/textAppearanceLarge"/>
                 </LinearLayout>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -183,15 +196,16 @@
                     android:layout_height="fill_parent"
                     android:background="@color/black"
                     android:gravity="center"/>
+
                 <TextView
                     android:id="@+id/textView_20"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:onClick="@{() -> viewModel.onCellClicked(2, 0)}"
                     android:text="."
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:onClick="@{() -> viewModel.onCellClicked(2, 0)}" />
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

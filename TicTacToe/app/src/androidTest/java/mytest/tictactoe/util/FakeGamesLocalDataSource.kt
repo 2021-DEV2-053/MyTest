@@ -11,7 +11,7 @@ class FakeGamesLocalDataSource: GamesLocalDataSource {
     }
 
     override suspend fun getGame(id: Long): Result<Game> {
-        TODO("Not yet implemented")
+        return Result.Success(TestData.game)
     }
 
     override suspend fun insertGame(game: Game): Result<Long> {
