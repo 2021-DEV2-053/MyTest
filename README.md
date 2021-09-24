@@ -11,8 +11,9 @@ To build a project, enter the project directory and use the `./gradlew assemble`
 - minSdk `21` - Android version 5
 
 ### Architecture
-My project architecture is based on the "Android Architecture Components" from Google, to provide a cleaner code, with clear separation between the view, the data and the business logic. 
-Data is observed using Kotlin Flows and the DataBinding Library binds UI components in layouts to the DataSources ( Players and Games )
+My project architecture is based on the "Android Architecture Components" from Google, to provide a cleaner code, with clear separation between the view, the data and the business logic. <br>
+Data is observed using Kotlin Flows and the DataBinding Library binds UI components in layouts to the DataSources ( Players and Games ).
+
 
 ### Built With
 - `Kotlin` - official programming language for Android development 
@@ -21,6 +22,18 @@ Data is observed using Kotlin Flows and the DataBinding Library binds UI compone
 - `Hilt` - Dependency Injection Framework.
 - `Navigation component` - to manage fragment operations.
 - `Material` -  for the user interface
+
+## Project structure
+
+| Path | Description |
+|:----:|:-----------:|
+| `buildsrc/src/main/java/` | Configs and dependencies of the project|
+| `app/src/androidTest/java/` | All tests of the project|
+| `app/src/main/java/data/source` | All entities, dataSources of the project|
+| `app/src/main/java/data/repository` | All repo implemented to get access to the data|
+| `app/src/main/java/di` | modules - Dependency Injection|
+| `app/src/main/java/domain` | models and repositories entry|
+| `app/src/main/java/ui` | User Interface of the project
 
 
 ### Screenshots
